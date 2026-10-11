@@ -5613,21 +5613,9 @@ button:disabled, input:disabled{
    Menu: "you are here" + quieter "new" marker
    ========================================================= */
 /* The _new cell means "something new in this section", not the current
-   page, so it gets a small accent dot instead of looking selected. */
+   page, so it shouldn't look selected. */
 .menunavigation_new a{
   color:var(--link-color);
-}
-.menunavigation_new a.normal::after{
-  content:"";
-  display:inline-block;
-  position:relative;
-  top:-.1rem;
-  width:.375rem;
-  height:.375rem;
-  margin-left:.375rem;
-  border-radius:50%;
-  background:var(--accent);
-  vertical-align:middle;
 }
 
 /* The site doesn't mark the current page, so each page is recognised by
@@ -5647,8 +5635,9 @@ button:disabled, input:disabled{
 /* =========================================================
    Pagination: make the current page obvious
    ========================================================= */
-/* Page links are plain <a>; the current page is bare <b> text.
-   Layout comes from the existing rules; this only adds colour. */
+/* Page links are plain <a>; the current page is bare <b> text after the
+   <br> (a bare <b> before it is a disabled Prev/Next). Same quiet style as
+   the menu's current page. */
 p[align="center"]:has(> a[href*="page="]){
   & > a{
     border-radius:var(--main-br);
@@ -5658,9 +5647,10 @@ p[align="center"]:has(> a[href*="page="]){
       color:var(--accent);
     }
   }
-  & > b{
+  & > br ~ b{
     border-radius:var(--main-br);
-    background-color:var(--button-primary-bg);
-    color:var(--button-primary-text-color);
+    background-color:var(--accent-tint);
+    box-shadow:inset 0 -2px 0 var(--accent);
+    color:var(--accent);
   }
 }
