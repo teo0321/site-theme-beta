@@ -5629,6 +5629,11 @@ button:disabled, input:disabled{
   & a{
     color:var(--accent);
   }
+  /* already here: no "new" breathing on top */
+  &::before{
+    animation:none;
+    opacity:0;
+  }
 }
 
 /* =========================================================
