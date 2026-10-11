@@ -5647,12 +5647,10 @@ button:disabled, input:disabled{
 /* =========================================================
    Pagination: make the current page obvious
    ========================================================= */
-/* Page links are plain <a>; the current page is bare <b> text. */
+/* Page links are plain <a>; the current page is bare <b> text.
+   Layout comes from the existing rules; this only adds colour. */
 p[align="center"]:has(> a[href*="page="]){
-  line-height:2.25;
   & > a{
-    display:inline-block;
-    padding:0 .45rem;
     border-radius:var(--main-br);
     transition:background-color .2s ease;
     &:hover{
@@ -5661,8 +5659,6 @@ p[align="center"]:has(> a[href*="page="]){
     }
   }
   & > b{
-    display:inline-block;
-    padding:0 .5rem;
     border-radius:var(--main-br);
     background-color:var(--button-primary-bg);
     color:var(--button-primary-text-color);
