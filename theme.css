@@ -5643,3 +5643,28 @@ button:disabled, input:disabled{
     color:var(--accent);
   }
 }
+
+/* =========================================================
+   Pagination: make the current page obvious
+   ========================================================= */
+/* Page links are plain <a>; the current page is bare <b> text. */
+p[align="center"]:has(> a[href*="page="]){
+  line-height:2.25;
+  & > a{
+    display:inline-block;
+    padding:0 .45rem;
+    border-radius:var(--main-br);
+    transition:background-color .2s ease;
+    &:hover{
+      background-color:var(--accent-tint);
+      color:var(--accent);
+    }
+  }
+  & > b{
+    display:inline-block;
+    padding:0 .5rem;
+    border-radius:var(--main-br);
+    background-color:var(--button-primary-bg);
+    color:var(--button-primary-text-color);
+  }
+}
