@@ -5658,9 +5658,14 @@ p[align="center"]:has(> a[href*="page="]){
   opacity:.35;
 }
 
-/* Forum pager: <b>[Prev] [pages...]</b> | <b>[Next]</b>. The current page is
-   the unlinked <font class="gray"> after Prev in the first group (a grey
-   first item is a disabled Prev, and Next lives in the second group). */
-p[align="center"] > b:first-of-type > font.gray:not(:first-child){
-  color:var(--accent);
+/* Forum pager: groups of <b> split by "|". Unlinked <font class="gray">
+   items are the current page, but also a disabled Prev (always first in
+   the first group) or Next (always last in the last group). */
+p[align="center"]{
+  & > b:first-of-type:not(:last-of-type) > font.gray:not(:first-child),
+  & > b:last-of-type:not(:first-of-type) > font.gray:not(:last-child),
+  & > b:not(:first-of-type):not(:last-of-type) > font.gray,
+  & > b:only-of-type > font.gray:not(:first-child):not(:last-child){
+    color:var(--accent);
+  }
 }
