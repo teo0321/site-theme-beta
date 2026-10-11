@@ -5669,3 +5669,15 @@ p[align="center"]{
     color:var(--accent);
   }
 }
+
+/* =========================================================
+   Forum search: readable match highlight
+   ========================================================= */
+/* The site marks matches with a bright background behind grey text.
+   Inline styles need !important to be overridden. */
+form[action="/forums/search"] ~ table :is(mark, .highlight, .search_highlight, span[style*="background"], font[style*="background"], b[style*="background"]){
+  padding:0 .125rem;
+  border-radius:var(--small-br);
+  background:var(--accent-tint) !important;
+  color:var(--accent) !important;
+}
