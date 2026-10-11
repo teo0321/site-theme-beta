@@ -5635,8 +5635,7 @@ button:disabled, input:disabled{
    Pagination: make the current page obvious
    ========================================================= */
 /* Page links are plain <a>; the current page is bare <b> text after the
-   <br> (a bare <b> before it is a disabled Prev/Next). Same quiet style as
-   the menu's current page. */
+   <br> (a bare <b> before it is a disabled Prev/Next). Shown as accent text only. */
 p[align="center"]:has(> a[href*="page="]){
   & > a{
     border-radius:var(--main-br);
@@ -5647,9 +5646,7 @@ p[align="center"]:has(> a[href*="page="]){
     }
   }
   & > br ~ b{
-    border-radius:var(--main-br);
-    background-color:var(--accent-tint);
-      color:var(--accent);
+    color:var(--accent);
   }
 }
 
@@ -5665,9 +5662,5 @@ p[align="center"]:has(> a[href*="page="]){
    the unlinked <font class="gray"> after Prev in the first group (a grey
    first item is a disabled Prev, and Next lives in the second group). */
 p[align="center"] > b:first-of-type > font.gray:not(:first-child){
-  padding:0 .5rem;
-  border-radius:var(--main-br);
-  background-color:var(--accent-tint);
   color:var(--accent);
-  text-align:center;
 }
