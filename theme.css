@@ -86,8 +86,8 @@
   --sans-font-stack:-apple-system, 'Noto Sans', system-ui, sans-serif;
   --rank-font-stack:'Trebuchet MS','Lucida Sans Unicode','Lucida Grande','Lucida Sans',Arial,sans-serif;
 
-  --small-br:.25rem;
-  --main-br:.5rem;
+  --small-br:.1875rem;
+  --main-br:.3125rem;
   --button-padding:.375rem .75rem;
 
   --poster-shadow:drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
