@@ -5629,11 +5629,6 @@ button:disabled, input:disabled{
   & a{
     color:var(--accent);
   }
-  /* already here: no "new" breathing on top */
-  &::before{
-    animation:none;
-    opacity:0;
-  }
 }
 
 /* =========================================================
@@ -5659,28 +5654,8 @@ p[align="center"]:has(> a[href*="page="]){
 }
 
 /* =========================================================
-   "New" menu item breathes (the default theme animates it too)
+   Pager
    ========================================================= */
-/* On its own layer, so it never fights the hover or "you are here" styles */
-.menunavigation_new{
-  position:relative;
-  &::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:-1;
-    border-radius:inherit;
-    background-color:var(--accent-tint);
-    opacity:0;
-    animation:menu-new-breathe 6s ease-in-out infinite;
-    pointer-events:none;
-  }
-}
-@keyframes menu-new-breathe{
-  0%, 100%{ opacity:0; }
-  50%{ opacity:.4; }
-}
-
 /* Disabled Prev/Next arrows fade back, as in the default theme */
 .pagerarrowhidden{
   opacity:.35;
