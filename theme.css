@@ -5654,3 +5654,31 @@ p[align="center"]:has(> a[href*="page="]){
     color:var(--accent);
   }
 }
+
+/* =========================================================
+   "New" menu item breathes (the default theme animates it too)
+   ========================================================= */
+/* On its own layer, so it never fights the hover or "you are here" styles */
+.menunavigation_new{
+  position:relative;
+  &::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    border-radius:inherit;
+    background-color:var(--accent-tint);
+    opacity:0;
+    animation:menu-new-breathe 3.5s ease-in-out infinite;
+    pointer-events:none;
+  }
+}
+@keyframes menu-new-breathe{
+  0%, 100%{ opacity:0; }
+  50%{ opacity:1; }
+}
+
+/* Disabled Prev/Next arrows fade back, as in the default theme */
+.pagerarrowhidden{
+  opacity:.35;
+}
