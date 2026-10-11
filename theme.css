@@ -15,7 +15,6 @@
   --sapphire:#74c7ec;
   --blue:hsl(233, 100%, 85%);
 
-  /* one accent blue + a hover and a muted variant */
   --accent:hsl(215, 92%, 72%);
   --accent-hover:hsl(215, 95%, 64%);
   --accent-muted:hsl(218, 50%, 50%);
@@ -24,14 +23,11 @@
   --overlay0:var(--accent);
   --bookmark-blue:hsl(203, 88%, 66%);
 
-  /* text: slightly softened white, secondary tones lifted for readability */
   --text:hsl(225, 20%, 91%);
   --text-muted-color:hsl(222, 10%, 61%);
   --subtext1:hsl(222, 14%, 80%);
   --subtext0:hsl(220, 11%, 57%);
 
-  /* surfaces: a touch of blue so it reads as "night" rather than black,
-     with clearer steps between page / header / card / raised */
   --crust:hsl(232, 16%, 5.5%);
   --base:hsl(232, 16%, 8%);
   --header:hsl(232, 15%, 10.5%);
@@ -587,8 +583,6 @@ div:has(.center_comments) > p[align="center"]{
   order:2;
   padding-inline:1rem;
 }
-/* Header row as a grid: user bar on top, then logo | search | spacer.
-   The equal 1fr side columns keep the search box centred on the page. */
 #header tr:has(> .embedded > a #logo){
   display:grid;
   grid-template-columns:1fr minmax(16rem, 40rem) 1fr;
@@ -596,7 +590,6 @@ div:has(.center_comments) > p[align="center"]{
   & > .embedded:first-child{ grid-area:logo; }
   & > .embedded:nth-child(2){ grid-area:search; }
   & > .embedded:last-of-type{ grid-area:bar; }
-  /* continues the logo/search row's top/bottom border under the empty column */
   &::after{
     grid-area:end;
     border-top:var(--general-border);
@@ -661,7 +654,6 @@ div:has(.center_comments) > p[align="center"]{
   }
 }
 #sitesearch{
-  /* fixed width so the input doesn't jump sideways when the category menu opens */
   & > ul{
     position:relative;
     flex:none;
@@ -912,8 +904,6 @@ div:has(.center_comments) > p[align="center"]{
   position:sticky;
   top:6.1875rem;
   background:var(--header);
-  /* #header is only 5rem tall but the menu sticks at 6.1875rem; paint the
-     1.1875rem gap above the menu so scrolled content can't peek through */
   box-shadow:0 -1.1875rem 0 0 var(--header);
 }
 .menu tr{
@@ -1361,7 +1351,6 @@ font[size="+3"]:has([href$="/support/contactstaff"]){
 /* =========================================================
    Torrent list
    ========================================================= */
-/* FREE / 50% / 75% badges, styled to match the .tag chips */
 #torrent-list a.fl::after,
 #torrent-list a[title^="25%"]::after,
 #torrent-list a[title^="50%"]::after{
@@ -1388,7 +1377,6 @@ font[size="+3"]:has([href$="/support/contactstaff"]){
 #torrent-list a[title^="50%"]::after{
   color:var(--sapphire);
 }
-/* category icons: muted until the row is hovered */
 #torrent-list .catcell img{
   filter:saturate(.3) brightness(.8);
   opacity:.75;
@@ -3423,10 +3411,6 @@ div.dhtmlxcalendar select.dhtmlxRichSelector{
 /* =========================================================
    Chosen (multi-select)
    ========================================================= */
-/* NOTE: the escaped space makes this match a single class literally named
-   "chosen-container chosen-container-single", so it never matches anything.
-   Kept as-is to avoid changing behavior; use .chosen-container.chosen-container-single
-   if you really want to hide single-selects. */
 div.chosen-container\ chosen-container-single{
   display:none !important;
 }
