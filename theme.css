@@ -5613,9 +5613,9 @@ button:disabled, input:disabled{
    Menu: "you are here" + quieter "new" marker
    ========================================================= */
 /* The _new cell means "something new in this section", not the current
-   page, so it shouldn't look selected. */
+   page, so it only gets a slightly brighter grey label. */
 .menunavigation_new a{
-  color:var(--link-color);
+  color:var(--subtext1); /* a touch brighter than other items, still grey */
 }
 
 /* The site doesn't mark the current page, so each page is recognised by
