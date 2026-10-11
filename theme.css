@@ -19,6 +19,7 @@
   --accent:hsl(215, 92%, 72%);
   --accent-hover:hsl(215, 95%, 64%);
   --accent-muted:hsl(218, 50%, 50%);
+  --accent-tint:hsl(215 92% 72% / .14);
   --lavender:var(--accent);
   --overlay0:var(--accent);
   --bookmark-blue:hsl(203, 88%, 66%);
@@ -929,11 +930,11 @@ div:has(.center_comments) > p[align="center"]{
   width:max-content;
   height:2rem;
   border-radius:var(--main-br);
-  transition:all .25s ease;
+  transition:background-color .2s ease;
   &:hover{
-    background-color:var(--link-hover-color);
+    background-color:var(--accent-tint);
     & a{
-      color:var(--crust);
+      color:var(--accent);
     }
   }
 }
@@ -967,6 +968,7 @@ div:has(.center_comments) > p[align="center"]{
   overflow:hidden;
   overscroll-behavior:contain;
   border:var(--table-border);
+  border-radius:var(--main-br);
   background:var(--mantle);
   scrollbar-gutter:stable;
   &:hover{
@@ -980,7 +982,9 @@ div:has(.center_comments) > p[align="center"]{
 }
 #sidebar-container h2{
   display:flex;
+  margin-bottom:.25rem;
   padding:.5rem;
+  font-size:var(--font-size-large);
   border-bottom:var(--general-border);
   & a{
     width:100%;
@@ -1005,9 +1009,15 @@ div:has(.center_comments) > p[align="center"]{
   font-size:0;
   line-height:0;
   &>a{
-    padding:.5rem 1rem;
+    margin:1px 0;
+    padding:.375rem .75rem;
+    border-radius:var(--main-br);
     font-size:var(--font-size);
     line-height:1.538;
+    transition:background-color .15s ease;
+    &:hover{
+      background-color:var(--quote-bg-color);
+    }
   }
   & > div{
     display:flex;
@@ -1351,28 +1361,42 @@ font[size="+3"]:has([href$="/support/contactstaff"]){
 /* =========================================================
    Torrent list
    ========================================================= */
+/* FREE / 50% / 75% badges, styled to match the .tag chips */
 #torrent-list a.fl::after,
 #torrent-list a[title^="25%"]::after,
 #torrent-list a[title^="50%"]::after{
-  width:2rem;
+  display:inline-block;
+  margin-left:4px;
+  padding:1px .5rem 2px;
   float:right;
+  border:var(--general-border);
+  border-radius:var(--main-br);
+  background:var(--crust);
   font-variant:small-caps;
-  font-size:.625rem;
-  font-family:var(--mono-font-stack);
-  text-align:center;
+  font-weight:700;
+  font-size:var(--font-size-tag);
+  line-height:normal;
+  font-family:var(--sans-font-stack);
   text-transform:lowercase;
   pointer-events:none;
 }
 #torrent-list a.fl::after{
   content:"FREE";
-  color:var(--lavender);
+  color:var(--accent);
 }
 #torrent-list a[title^="25%"]::after,
 #torrent-list a[title^="50%"]::after{
   color:var(--sapphire);
-  font-weight:300;
-  text-align:end;
-  filter:brightness(90%);
+}
+/* category icons: muted until the row is hovered */
+#torrent-list .catcell img{
+  filter:saturate(.3) brightness(.8);
+  opacity:.75;
+  transition:filter .2s ease, opacity .2s ease;
+}
+#torrent-list tr:hover .catcell img{
+  filter:none;
+  opacity:1;
 }
 #torrent-list a[title^="50%"]::after{
   content:"50%";
@@ -3004,10 +3028,10 @@ p[id^="news"]{
   width:100%;
   padding:var(--button-padding);
 }
-.tab:hover{
-  background:var(--link-hover-color);
+.tab:not(.selected):hover{
+  background:var(--accent-tint);
   & a{
-    color:var(--button-primary-text-color);
+    color:var(--accent);
   }
 }
 .bottom:not([id]) > :is(table:has(b > a[href$="/forums"]), table:has(.submenu-highlight),
@@ -3034,10 +3058,10 @@ table:has(a[href$="/lists/my"]), table:has(td[width="12%"] > b > a[href*="/staff
     &.submenu-highlight{
       background-color:var(--button-primary-bg);
     }
-    &:hover{
-      background:var(--link-hover-color);
+    &:not(.submenu-highlight):hover{
+      background:var(--accent-tint);
       a{
-        color:var(--button-primary-text-color);
+        color:var(--accent);
       }
     }
   }
@@ -3048,7 +3072,7 @@ table:has(a[href$="/lists/my"]), table:has(td[width="12%"] > b > a[href*="/staff
   width:100%;
   padding:var(--button-padding);
 }
-:is(.tab.selected, .submenu-highlight):not(:hover){
+:is(.tab.selected, .submenu-highlight){
   background-color:var(--button-primary-bg);
   & a{
     color:var(--button-primary-text-color);
